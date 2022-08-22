@@ -4,11 +4,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      mobile: "375px",
-      desktop: "1440px",
+      mobile: "100px",
+      desktop: "800px",
     },
     colors: {
-      borderGray: "hsl(249, 99%, 64%)",
+      borderGray: "hsl(270, 3%, 87%)",
+      borderPurple: "hsl(278, 94%, 30%)",
+      errorRed: "hsl(0, 100%, 66%)",
+      textVeryDarkPurple: "hsl(278, 68%, 11%)",
     },
     extend: {
       margin: {
