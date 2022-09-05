@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     screens: {
       mobile: "100px",
-      desktop: "800px",
+      desktop: "1040px",
     },
     colors: {
       borderGray: "hsl(270, 3%, 87%)",
@@ -59,6 +59,10 @@ module.exports = {
         mainColor: "#FBF8F9",
         secondaryColor: "#F0F0F0",
         blackOverlay: "rgba(0, 0 ,0 ,0.7)",
+      },
+      backgroundImage: {
+      'bgMainMobile': "url('./assets/images/bg-main-mobile.png')",
+      'bgMainDesktop': "url('./assets/images/bg-main-desktop.png')",
       },
       keyframes: {
         "slide-in": {
