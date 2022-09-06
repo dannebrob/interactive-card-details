@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# Frontend Mentor - Interactive card details form solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Fill in the form and see the card details update in real-time
+- Receive error messages when the form is submitted if:
+  - Any input field is empty
+  - The card number, expiry date, or CVC fields are in the wrong format
+- View the optimal layout depending on their device's screen size
+- See hover, active, and focus states for interactive elements on the page
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./screenshot.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
 
-### `npm run eject`
+Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Links
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## My process
 
-## Learn More
+### Built with
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Tailwind](https://tailwindcss.com/) - CSS framework
+- [React Hook Form](https://react-hook-form.com/) - Forms in React
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
-### Code Splitting
+### What I learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This was a nice challenge to me and I had a blast making it. I was looking for a project that could make me more confident with styling in Tailwind. I found that the utility-first approach was a good choice for the project. 
 
-### Analyzing the Bundle Size
+Also to get some experience with forms in React has been great. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+One challenge I meet was to get the spaces between the digits on the card front.
 
-### Making a Progressive Web App
+```
+unction injectSpaces(str) {
+    let groupsOf4 = [];
+  
+    for (let start = 0; start < str.length; start += 4) {
+      let group = str.slice(start, start + 4);
+      groupsOf4.push(group);
+    }
+  
+    return groupsOf4.join(" ");
+  }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Continued development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+I want to continue to get experience with  the Realtive and Absolute posistioning in CSS, its something that I have not been doing a lot before and it was nice to get some experience with it in this project and I will keep on using it more.
 
-### Deployment
+```
+ <div className="relative h-[500px] w-[500px] m-auto">
+          <div
+            id="back-card"
+            className="w-80 top-4 absolute left-20 rounded-md xl:top-52"
+          >
+            <div id="img" className="absolute z-1 z-0">
+              <img src={bgCardBack} className="rounded-md" alt="card background" />
+            </div>
+            <p id="cvc" className="absolute top-[4.7rem] right-10 z-1 text-white">
+              {cvc}
+            </p>
+          </div>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Tailwind docs](https://tailwindcss.com/docs) - This was my go-to place for all Tailwind, would not have made it without it.
+- [CSS Tricks](https://www.css-tricks.com) - My one-stop-place to the syntax of flexbox/grid, with great visuals so its easy to understand and use. 
+
+
+## Author
+
+- Website - [Daniel Brobäck](https://www.danielbroback.se)
+- Frontend Mentor - [@dannebrob](https://www.frontendmentor.io/profile/dannebrob)
+- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+
+
+## Acknowledgments
+
+Thank you frontend mentor for this amazing challenge, it has help me grow as a developer in so many ways. 
+
