@@ -33,7 +33,6 @@ function App() {
   }
   const handleLettersChange = event => {
     const lettersResult = event.target.value.replace(/[^a-z]/gi, '');
-    console.log(event.target.name);
     setName(lettersResult);
   };
 
