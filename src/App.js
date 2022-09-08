@@ -33,43 +33,69 @@ function App() {
   
     return groupsOf4.join(" ");
   }
+  const handleLettersChange = event => {
+    const lettersResult = event.target.value.replace(/[^a-z]/gi, '');
+    console.log(event.target.name);
+    setName(lettersResult);
+  };
+
+  const handleNumbersChange = event => {
+    const numberResult = event.target.value.replace(/[^1-9]/gi, '');
+
+    setNumber(numberResult)
+  };
+
+  const handleYearChange = event => {
+    const numberResult = event.target.value.replace(/[^1-9]/gi, '');
+
+    setExpirationYear(numberResult)
+  };
+
+  const handleMonthChange = event => {
+    const numberResult = event.target.value.replace(/[^1-9]/gi, '');
+
+    setExpirationMonth(numberResult)
+  };
+  const handleCvcChange = event => {
+    const numberResult = event.target.value.replace(/[^1-9]/gi, '');
+
+    setCvc(numberResult)
+  };
+
   return (
     <div className="App" style={{ height: "100vh", width: "100vw" }}>
       <div className="flex flex-wrap mobile:flex-col xl:flex-row xl:h-full w-full flex-wrap">
         <div
-          id="container"
           className="h-60 w-full xl:h-11/12 xl:w-1/4  xl:h-full bg-cover bg-no-repeat flex justify-center items-center bg-mobile-bg sm:bg-desktop-bg "
         >
           <div className="relative h-[500px] w-[500px] m-auto">
           <div
-            id="back-card"
             className="w-80 top-4 absolute left-20 rounded-md xl:top-52"
           >
-            <div id="img" className="absolute z-1 z-0">
+            <div className="absolute z-1 z-0">
               <img src={bgCardBack} className="rounded-md" alt="card background" />
             </div>
-            <p id="cvc" className="absolute top-[4.7rem] right-10 z-1 text-white">
+            <p className="absolute top-[4.7rem] right-10 z-1 text-white">
               {cvc}
             </p>
           </div>
-          <div id="front-card" className="w-80 absolute left-8 top-28 m-auto xl:top-0 xl:left-10">
-            <div id="img" className="absolute z-1 z-0">
+          <div className="w-80 absolute left-8 top-28 m-auto xl:top-0 xl:left-10">
+            <div className="absolute z-1 z-0">
               <img src={bgCardFront} className="rounded-md" alt="card background" />
             </div>
             <p
-              id="numbers"
               className="absolute top-20 left-4 z-1 text-white text-xl"
             >
               {injectSpaces(number)}
             </p>
-            <p id="name" className="absolute top-32 left-5 z-1 text-white">
+            <p className="absolute top-32 left-5 z-1 text-white">
               {name}
             </p>
-            <p id="until" className="absolute top-32 right-12 z-1 text-white">
+            <p className="absolute top-32 right-12 z-1 text-white">
               {expirationMonth} / {expirationYear}
             </p>
 
-            <div id="icon" className="absolute top-[25px] left-4 z-1 w-12 h-12">
+            <div className="absolute top-[25px] left-4 z-1 w-12 h-12">
               <img src={cardLogo} alt="card logo" />
             </div>
           </div>
@@ -104,13 +130,14 @@ function App() {
      cardholder name
    </p>
    <input
-     type="text"
+     type="text"name="fullName"
      {...register("fullName", { required: {value: true, message: 'Cant be blank'} })}
      className="border-2 border-borderGray border-solid w-full h-10 p-2 rounded-md active:border-borderPurple"
      placeholder="e.g Jane Appleseed"
-     onChange={(e) => {
-       setName(e.target.value);
-     }}
+    //  onChange={(e) => {
+    //    setName(e.target.value);
+    //  }}
+    onChange={(e) => {handleLettersChange(e)}}
      style={errors?.fullName ? { border: "3px solid red" } : null}
    />
    {errors.fullName && (
@@ -119,20 +146,15 @@ function App() {
    <p className="uppercase text-sm text-very-dark-violet font-bold mt-4">
      Card number
    </p>
-   <input type="text" maxLength="16"
+   <input type="text" maxLength="16" name="Number"
      {...register("number", { required: {value: true, message: 'Cant be blank'},   minLength: {
        value: 16,
        message: "min length is 12"
-     }, pattern: {
-      value: /^[0-9]*$/,
-      message: 'Wrong format, only numbers' // JS only: <p>error message</p> TS only support string
-    }
+     }
     })}
      placeholder="000 000 000 000"
      className="border-2 border-borderGray border-solid w-full h-10 p-2 rounded-md active:border-active-gradient "
-     onChange={(e) => {
-       setNumber(e.target.value);
-     }}
+    onChange={(e) => handleNumbersChange(e)}
      style={errors?.number ? { border: "3px solid red" } : null}
    />
    {errors.number && (
@@ -145,7 +167,7 @@ function App() {
          EXP. DATE (MM/YY)
        </p>
        <input
-         type="number" maxLength="2"
+         type="text" maxLength="2"
          {...register("month", { required: {value: true, message: 'Cant be blank'},  minLength: {
            value: 2,
            message: "min length is 2"
@@ -153,12 +175,12 @@ function App() {
          placeholder="MM"
          className="border-2 border-borderGray border-solid h-10 p-2 rounded-md w-20 active:border-active-gradient"
          onChange={(e) => {
-           setExpirationMonth(e.target.value);
+          handleMonthChange(e);
          }}
          style={errors?.month ? { border: "3px solid red" } : null}
        />
        <input
-         type="number" maxLength="2"
+         type="text" maxLength="2" name="year"
          {...register("year", { required: {value: true, message: 'Cant be blank'}, minLength: {
            value: 2,
            message: "min length is 2"
@@ -166,7 +188,7 @@ function App() {
          placeholder="YY"
          className="border-2 border-borderGray border-solid h-10 p-2 ml-2 rounded-md w-20 active:border-active-gradient"
          onChange={(e) => {
-           setExpirationYear(e.target.value);
+          handleYearChange(e);
          }}
          style={errors?.year ? { border: "3px solid red" } : null}
        />
@@ -182,8 +204,9 @@ function App() {
          CVC
        </p>
        <input
-         type="number"
+         type="text"
          maxLength="3"
+         name="cvc"
          {...register("cvc", { required: {value: true, message: 'Cant be blank'}, minLength: {
           value: 3,
           message: "min length is 3"
@@ -191,7 +214,7 @@ function App() {
          placeholder="e.g. 123"
          className="border-2 border-borderGray border-solid h-10 p-2 rounded-md w-5/6 active:border-active-gradient"
          onChange={(e) => {
-           setCvc(e.target.value);
+          handleCvcChange(e);
          }}
          style={errors?.cvc ? { border: "3px solid red" } : null}
        />
