@@ -20,8 +20,6 @@ function App() {
     reset,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
-  const onSubmit = (data, e) => console.log(data, e)
-  const onError = (errors, e) => console.log(errors, e);
 
   function injectSpaces(str) {
     let groupsOf4 = [];
@@ -227,7 +225,7 @@ function App() {
        value="Confirm"
        className="bg-[#21092f] rounded-md w-8/12 h-8 m-8"
        style={{ color: "white" }}
-       onClick={handleSubmit(onSubmit)}
+       onClick={handleSubmit()}
      />
    </div>
  </form>
