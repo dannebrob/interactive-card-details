@@ -65,7 +65,7 @@ function App() {
         <div
           className="h-60 w-full xl:h-11/12 xl:w-1/4  xl:h-full bg-cover bg-no-repeat flex justify-center items-center bg-mobile-bg sm:bg-desktop-bg "
         >
-          <div className="relative h-[500px] w-[500px] m-auto">
+          <div className="z-0 relative h-[500px] w-[500px] m-auto">
           <div
             className="w-80 top-4 absolute left-20 rounded-md xl:top-52"
           >
@@ -121,8 +121,8 @@ function App() {
           </div>
         )}
         {!isSubmitSuccessful && (
- <div id="form" className="w-11/12 h-full pt-20 z-1 xl:w-3/4 flex justify-center m-auto xl:items-center">
- <form onSubmit={handleSubmit(onSubmit, onError)}>
+ <div id="form" className=" z-10 w-11/12 h-full pt-20 z-1 xl:w-3/4 flex justify-center m-auto xl:items-center">
+ <form onSubmit={handleSubmit()}>
    <p className="uppercase text-sm text-very-dark-violet font-bold">
      cardholder name
    </p>
