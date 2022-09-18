@@ -35,7 +35,7 @@ function App() {
     return groupsOf4.join(" ");
   }
   const handleLettersChange = (event) => {
-    const lettersResult = event.target.value.replace(/[^a-z]/gi, "");
+    const lettersResult = event.target.value.replace(/[^a-z ]/gi, "");
     setName(lettersResult);
   };
 
