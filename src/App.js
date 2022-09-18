@@ -21,6 +21,9 @@ function App() {
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
+  const onSubmit = (data, e) => console.log(data, e);
+  const onError = (errors, e) => console.log(errors, e);
+
   function injectSpaces(str) {
     let groupsOf4 = [];
 
@@ -127,7 +130,7 @@ function App() {
             id="form"
             className=" z-10 w-11/12 h-full pt-20 z-1 xl:w-3/4 flex justify-center m-auto xl:items-center"
           >
-            <form onSubmit={handleSubmit()}>
+            <form onSubmit={handleSubmit(onSubmit, onError)}>
               <p className="uppercase text-sm text-very-dark-violet font-bold">
                 cardholder name
               </p>
@@ -251,7 +254,6 @@ function App() {
                   value="Confirm"
                   className="bg-[#21092f] rounded-md w-8/12 h-8 m-8"
                   style={{ color: "white" }}
-                  onClick={handleSubmit()}
                 />
               </div>
             </form>
